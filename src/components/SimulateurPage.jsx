@@ -202,7 +202,7 @@ const SIM_EX = [
 // ═══════════════════════════════════════════════════════════════════════
 // CALC ENGINE
 // ═══════════════════════════════════════════════════════════════════════
-function simFmt(n){if(n==null||isNaN(n))return"—";return new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);}
+export function simFmt(n){if(n==null||isNaN(n))return"—";return new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);}
 function simCAb(a,t){if(a>=t.length)return 100;let s=0;for(let i=0;i<=Math.min(a,t.length-1);i++)s+=t[i];return Math.min(s,100);}
 function simPV(p,c,a,rp,tr=0,am=0){
   if(rp)return{ir:0,ps:0,total:0,exo:"RP",pvBrute:0,abattIR:100,abattPS:100};
@@ -335,7 +335,7 @@ function simGenEx(pr,pp){
   return sc.sort((a,b)=>b.score-a.score);
 }
 
-function simGenAcq(pr,pp){
+export function simGenAcq(pr,pp){
   const px=pp.prixAcquisition||0, dur=pp.acqDureeDetention||15, txR=(pp.acqTauxRevalo||2)/100;
   const loy=pp.acqLoyer||pp.loyerAnnuel||0, ch=pp.acqCharges||pp.chargesLocatives||0, txF=pp.acqTaxeFonciere||0;
   const tmi=pr.tmi||30, nE=Math.max(pr.enfants||1,1), mul=pr.couple?2:1;
